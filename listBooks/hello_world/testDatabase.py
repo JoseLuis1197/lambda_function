@@ -173,18 +173,12 @@ class TestDatabase:
 
     return "OK"
   
-  def listBooks(self):
-
-    args = []
-    bookDict = []
-    print("Hora de abrir conexión: "+str(datetime.now()))
-    con = ConnectionDatabase()
-    print("Ir a sacar data del sp: "+str(datetime.now()))
+  def listBooks(self,args):
+    
+    bookDict = []    
+    con = ConnectionDatabase()    
 
     resultSet = con.consumeStoreProcedure(self.spNameListBooks,args)
-
-    print("Hora de fin para sacar data sp: "+str(datetime.now()))
-    print("Hora de inicio del diccionario: "+str(datetime.now()))
 
     ## Creating a dictionary
     for row in resultSet:
@@ -209,8 +203,6 @@ class TestDatabase:
             }
           }
 
-      bookDict.append(o)
-
-    print("Hora de fin del diccionario: " + str(datetime.now()))
+      bookDict.append(o)    
 
     return json.dumps({"data":bookDict})
