@@ -13,7 +13,9 @@ def lambda_handler(event, context):
 
     test = TestDatabase()
 
+    statusCode, body = test.listBooks(args)
+
     return {
-        "statusCode": 200,
-        "body": test.listBooks(args),
+        "statusCode": statusCode,
+        "body": body
     }
