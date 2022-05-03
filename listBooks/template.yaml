@@ -25,6 +25,11 @@ Resources:
           Properties:
             Path: /hello
             Method: get
+            RequestParameters:
+              - method.request.querystring.offset
+              - method.request.querystring.limit
+              - method.request.querystring.autorName
+              - method.request.querystring.name
 
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
