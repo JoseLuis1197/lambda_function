@@ -15,9 +15,11 @@ class TestDatabase:
   spNameCreateOrder = "spCreateOrder"
   spNameCreateOrderDetail = "spAddItemsToOrder"
   spNameListBooks = "spListBooks"
+  spNameGetBook = "spGetBook"
 
   def __init__(self) -> None:
-      pass
+    pass
+  
 
   def getOrder(self,orderId):
 
@@ -173,18 +175,12 @@ class TestDatabase:
 
     return "OK"
   
-  def listBooks(self):
-
-    args = []
-    bookDict = []
-    print("Hora de abrir conexión: "+str(datetime.now()))
-    con = ConnectionDatabase()
-    print("Ir a sacar data del sp: "+str(datetime.now()))
+  def listBooks(self,args):
+    
+    bookDict = []    
+    con = ConnectionDatabase()    
 
     resultSet = con.consumeStoreProcedure(self.spNameListBooks,args)
-
-    print("Hora de fin para sacar data sp: "+str(datetime.now()))
-    print("Hora de inicio del diccionario: "+str(datetime.now()))
 
     ## Creating a dictionary
     for row in resultSet:
@@ -209,8 +205,45 @@ class TestDatabase:
             }
           }
 
-      bookDict.append(o)
+      bookDict.append(o)    
 
-    print("Hora de fin del diccionario: " + str(datetime.now()))
+    return 200,json.dumps({"data":bookDict})
 
-    return json.dumps({"data":bookDict})
+  def getBook(self,args):
+    
+    con = ConnectionDatabase()    
+
+    resultSet = con.consumeStoreProcedure(self.spNameGetBook,args)
+
+    if resultSet[0] == "ERROR":
+      return 400,json.dumps({"alias":"bookNotFound","message":resultSet[1]})    
+
+    ## Creating a dictionary
+    for r in resultSet:
+      bookDict = {
+                  "id": r[0],
+                  "name": r[1],
+                  "description": r[2],
+                  "stars": r[3],
+                  "image": r[4],
+                  "language": r[5],
+                  "releaseYear": r[6],
+                  "isbn": r[7],
+                  "stock": r[8],
+                  "pagesNumber": r[9],
+                  "priceInformation": {
+                    "amount": r[10],
+                    "currency": r[11]
+                  },
+                  "autor": {
+                    "id": r[12],
+                    "fullName": r[13],
+                    "country": r[14]
+                  },
+                  "editor":{
+                    "id": r[15],
+                    "name": r[16]
+                  }
+                }
+
+      return 200,json.dumps({"data":bookDict})
