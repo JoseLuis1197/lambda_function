@@ -26,19 +26,12 @@ Resources:
             Path: /books
             Method: get
             RequestParameters:
-<<<<<<< HEAD
-              - method.request.querystring.Name:
+              - method.request.querystring.name:
                   Required: False
                   Caching: False
-              - method.request.querystring.AutorName:
+              - method.request.querystring.autorName:
                   Required: False
                   Caching: False
-=======
-              - method.request.querystring.offset
-              - method.request.querystring.limit
-              - method.request.querystring.autorName
-              - method.request.querystring.name
->>>>>>> b58df83799249b1df23276770dc7f2f494048229
 
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
