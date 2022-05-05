@@ -4,16 +4,17 @@ import json
 def lambda_handler(event, context):
 
     ##Getting the query params from the event
-    if 'queryStringParameters' in event and 'name' in event['queryStringParameters']:
-        qpName = event['queryStringParameters']['name']
-    else:
-        qpName = "None"
-    
-    if 'queryStringParameters' in event and 'autorName' in event['queryStringParameters']:
-        qpAutor = event['queryStringParameters']['autorName']
-    else:
-        qpAutor = "None"
 
+    qpName = "None"
+    qpAutor = "None"
+
+    if 'queryStringParameters' in event:
+        if 'name' in event['queryStringParameters']:
+            qpName = event['queryStringParameters']['name']
+
+        if 'autorName' in event['queryStringParameters']:
+            qpAutor = event['queryStringParameters']['autorName']
+    
     ##args = [qpName,qpAutor]
 
     ##test = TestDatabase()
