@@ -1,9 +1,9 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: >
-  listBooks
+  getBook
 
-  Sample SAM Template for listBooks
+  Sample SAM Template for getBook
 
 # More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
 Globals:
@@ -11,45 +11,31 @@ Globals:
     Timeout: 3
 
 Resources:
-  ListBooksFunction:
+  GetBookFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
-      CodeUri: listBooks/
+      CodeUri: hello_world/
       Handler: app.lambda_handler
       Runtime: python3.9
       Architectures:
-        - arm64
+        - x86_64
       Events:
-        ListBooks:
+        GetBook:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
           Properties:
-            Path: /books
+            Path: /books/{book-id}
             Method: get
-            RequestParameters:
-<<<<<<< HEAD
-              - method.request.querystring.Name:
-                  Required: False
-                  Caching: False
-              - method.request.querystring.AutorName:
-                  Required: False
-                  Caching: False
-=======
-              - method.request.querystring.offset
-              - method.request.querystring.limit
-              - method.request.querystring.autorName
-              - method.request.querystring.name
->>>>>>> b58df83799249b1df23276770dc7f2f494048229
 
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
   # Find out more about other implicit resources you can reference within SAM
   # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
-  ListBooksApi:
+  GetBookdApi:
     Description: "API Gateway endpoint URL for Prod stage for Hello World function"
-    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/books/"
-  ListBooksFunction:
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/books/{book-id}"
+  GetBookFunction:
     Description: "Hello World Lambda Function ARN"
-    Value: !GetAtt ListBooksFunction.Arn
-  ListBooksFunctionIamRole:
+    Value: !GetAtt GetBookFunction.Arn
+  GetBookFunctionIamRole:
     Description: "Implicit IAM Role created for Hello World function"
-    Value: !GetAtt ListBooksFunctionRole.Arn
+    Value: !GetAtt GetBookFunctionRole.Arn
