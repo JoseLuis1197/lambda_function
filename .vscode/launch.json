@@ -1,0 +1,18 @@
+{
+  "configurations": [
+    {
+      "type": "aws-sam",
+      "request": "direct-invoke",
+      "name": "listBooks:ListBooksFunction",
+      "invokeTarget": {
+        "target": "template",
+        "templatePath": "${workspaceFolder}/listBooks/template.yaml",
+        "logicalId": "ListBooksFunction"
+      },
+      "lambda": {
+        "payload": {"path": "listBooks/events/event.json"},
+        "environmentVariables": {}
+      }
+    }
+  ]
+}
