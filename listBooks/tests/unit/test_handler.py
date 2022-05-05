@@ -34,7 +34,7 @@ def apigw_event():
             },
             "stage": "prod",
         },
-        "queryStringParameters": {"foo": "bar"},
+        "queryStringParameters": {"name": "No me esperen en abril", "autorName":"Ramon Ribeiro"},
         "headers": {
             "Via": "1.1 08f323deadbeefa7af34d5feb414ce27.cloudfront.net (CloudFront)",
             "Accept-Language": "en-US,en;q=0.8",
