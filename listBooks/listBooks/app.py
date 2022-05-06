@@ -1,12 +1,14 @@
 from testDatabase import TestDatabase
-import json
 
 def lambda_handler(event, context):
 
     ##Getting the query params from the event
 
-    qpName = "None"
-    qpAutor = "None"
+    qpName = ""
+    qpAutor = ""
+    qpScore = ""
+    qpLimit = 0
+    qpOffset = 0
 
     if 'queryStringParameters' in event:
         if 'name' in event['queryStringParameters']:
@@ -15,14 +17,15 @@ def lambda_handler(event, context):
         if 'autorName' in event['queryStringParameters']:
             qpAutor = event['queryStringParameters']['autorName']
     
-    ##args = [qpName,qpAutor]
+    args = [qpName,qpAutor,qpScore,qpLimit,qpOffset]
 
-    ##test = TestDatabase()
+    books = TestDatabase()
 
-    ##statusCode, body = test.listBooks(args)
+    body = {}
+
+    statusCode, body = books.listBooks(args)
 
     return {
-        ##"statusCode": statusCode,
-        "statusCode": 200,
-        "body": json.dumps({"data":qpName,"data1":qpAutor})
+        "statusCode": statusCode,
+        "body": body
     }
