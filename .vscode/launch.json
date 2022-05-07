@@ -3,35 +3,14 @@
     {
       "type": "aws-sam",
       "request": "direct-invoke",
+      "name": "listBooks:ListBooksFunction",
       "invokeTarget": {
         "target": "template",
-        "logicalId": "HelloWorldFunction",
-        "templatePath": "${workspaceFolder}/template.yaml"
+        "templatePath": "${workspaceFolder}/listBooks/template.yaml",
+        "logicalId": "ListBooksFunction"
       },
       "lambda": {
-        "runtime": "python3.9"
-      },
-      "sam": {
-        "containerBuild": false,
-        "skipNewImageCheck": false
-      },
-      "api": {
-        "path": "/hello",
-        "httpMethod": "get"
-      },
-      "name": "debugpython"
-    },
-    {
-      "type": "aws-sam",
-      "request": "direct-invoke",
-      "name": "lambda-python-test:HelloWorldFunction",
-      "invokeTarget": {
-        "target": "template",
-        "templatePath": "${workspaceFolder}/template.yaml",
-        "logicalId": "HelloWorldFunction"
-      },
-      "lambda": {
-        "payload": {},
+        "payload": {"path": "listBooks/events/event.json"},
         "environmentVariables": {}
       }
     }

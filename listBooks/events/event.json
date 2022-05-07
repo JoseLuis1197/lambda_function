@@ -1,11 +1,11 @@
 {
   "body": "{\"message\": \"hello world\"}",
-  "resource": "/hello",
-  "path": "/hello",
+  "resource": "/books",
+  "path": "/books",
   "httpMethod": "GET",
   "isBase64Encoded": false,
   "queryStringParameters": {
-    "foo": "bar"
+    "name": "bar"
   },
   "pathParameters": {
     "proxy": "/path/to/resource"
@@ -53,9 +53,9 @@
       "userAgent": "Custom User Agent String",
       "user": null
     },
-    "path": "/prod/hello",
-    "resourcePath": "/hello",
-    "httpMethod": "POST",
+    "path": "/prod/books",
+    "resourcePath": "/books",
+    "httpMethod": "GET",
     "apiId": "1234567890",
     "protocol": "HTTP/1.1"
   }
