@@ -21,7 +21,7 @@ def lambda_handler(event, context):
             qpLimit = event['queryStringParameters']['pageSize']
 
         if 'pageOffset' in event['queryStringParameters']:
-            qpLimit = event['queryStringParameters']['pageOffset']
+            qpOffset = event['queryStringParameters']['pageOffset']
     
     args = [qpName,qpAutor,qpScore,qpLimit,qpOffset]
 
