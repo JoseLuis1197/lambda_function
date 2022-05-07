@@ -35,6 +35,9 @@ Resources:
               - method.request.querystring.pageSize:
                   Required: False
                   Caching: False
+              - method.request.querystring.pageOffset:
+                  Required: False
+                  Caching: False
 
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
