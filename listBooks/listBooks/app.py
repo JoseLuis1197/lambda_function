@@ -8,7 +8,7 @@ def lambda_handler(event, context):
     qpAutor = ""
     qpScore = 0
     qpLimit = 20
-
+    qpOffset = 0
 
     if 'queryStringParameters' in event:
         if 'name' in event['queryStringParameters']:
@@ -19,8 +19,11 @@ def lambda_handler(event, context):
 
         if 'pageSize' in event['queryStringParameters']:
             qpLimit = event['queryStringParameters']['pageSize']
+
+        if 'pageOffset' in event['queryStringParameters']:
+            qpLimit = event['queryStringParameters']['pageOffset']
     
-    args = [qpName,qpAutor,qpScore,qpLimit]
+    args = [qpName,qpAutor,qpScore,qpLimit,qpOffset]
 
     books = TestDatabase()
 
