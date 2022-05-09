@@ -1,11 +1,11 @@
 {
-  "body": "{\"message\": \"hello world\"}",
+  "body": "{}",
   "resource": "/books",
   "path": "/books/{book-id}",
   "httpMethod": "GET",
   "isBase64Encoded": false,
   "pathParameters": {
-    "proxy": "/path/to/resource"
+    "book-id": "1"
   },
   "stageVariables": {
     "baz": "qux"
@@ -50,9 +50,9 @@
       "userAgent": "Custom User Agent String",
       "user": null
     },
-    "path": "/prod/books",
+    "path": "/prod/books/{book-id}",
     "resourcePath": "/books",
-    "httpMethod": "POST",
+    "httpMethod": "GET",
     "apiId": "1234567890",
     "protocol": "HTTP/1.1"
   }

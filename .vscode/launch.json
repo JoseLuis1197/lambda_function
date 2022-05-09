@@ -3,11 +3,11 @@
     {
       "type": "aws-sam",
       "request": "direct-invoke",
-      "name": "getBook:HelloWorldFunction",
+      "name": "getBook:GetBookFunction",
       "invokeTarget": {
         "target": "template",
         "templatePath": "${workspaceFolder}/getBook/template.yaml",
-        "logicalId": "HelloWorldFunction"
+        "logicalId": "GetBookFunction"
       },
       "lambda": {
         "payload": {
