@@ -21,7 +21,6 @@
 | offset| Next number value | string |
 
   
-
 ## Response:
 
 
