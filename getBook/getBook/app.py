@@ -12,6 +12,8 @@ def lambda_handler(event, context):
 
     args = [ppBookId]
 
+    bodyResponse = {}
+
     statusCode, bodyResponse = book.getBook(args)
 
     return {

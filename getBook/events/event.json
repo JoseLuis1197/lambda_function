@@ -5,7 +5,7 @@
   "httpMethod": "GET",
   "isBase64Encoded": false,
   "pathParameters": {
-    "book-id": "1"
+    "book-id": "30"
   },
   "stageVariables": {
     "baz": "qux"
