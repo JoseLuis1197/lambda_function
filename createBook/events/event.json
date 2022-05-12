@@ -1,14 +1,28 @@
 {
-  "body": "{\"message\": \"hello world\"}",
-  "resource": "/hello",
-  "path": "/hello",
-  "httpMethod": "GET",
+  "body": {
+    "name": "El último sueño del Celta",
+    "description": "Muy buen libro para la tarde",
+    "isbn": "948FUF",
+    "language": "Español",
+    "releaseYear":2020,
+    "pagesNumber": 500,
+    "price": {
+      "amount": 23.5,
+      "currency": "USD"
+    },
+    "editor": {
+      "id": 1
+    },
+    "autor": {
+      "id": 1
+    }
+  },
+  "resource": "/books",
+  "path": "/books",
+  "httpMethod": "POST",
   "isBase64Encoded": false,
   "queryStringParameters": {
     "foo": "bar"
-  },
-  "pathParameters": {
-    "proxy": "/path/to/resource"
   },
   "stageVariables": {
     "baz": "qux"
@@ -53,8 +67,8 @@
       "userAgent": "Custom User Agent String",
       "user": null
     },
-    "path": "/prod/hello",
-    "resourcePath": "/hello",
+    "path": "/prod/books",
+    "resourcePath": "/books",
     "httpMethod": "POST",
     "apiId": "1234567890",
     "protocol": "HTTP/1.1"
