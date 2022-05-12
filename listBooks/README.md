@@ -21,7 +21,6 @@
 | offset| Next number value | string |
 
   
-
 ## Response:
 
 
@@ -32,37 +31,36 @@ This endpoint retrieves a list of books. If limit and offset were informed, the 
 
 | Field | Description |
 |--|--|
-| data | |
-| data.id | Book unique identifier. |
-| data.name | Book name |
-| data.description | Book summary |
-| data.stars | Calification customers made for the book. |
-| data.images[n] | Book images |
-| data.images[n].address| URL where the image is stored. |
-| data.language| Language the book was writen. |
-| data.isbn| Book ISBN code. |
-| data.stock| Current stock. |
-| data.pagesNumber| Book page number. |
-| data.priceInformation| Book selling price. This amount contains all the taxes or fees. |
-| data.priceInformation.amount| Monetary amount. |
-| data.priceInformation.currency| ISO 4217 |
+| data[n] | |
+| data[n].id | Book unique identifier. |
+| data[n].name | Book name |
+| data[n].description | Book summary |
+| data[n].stars | Calification customers made for the book. |
+| data[n].images[n] | Book images |
+| data[n].images[n].address| URL where the image is stored. |
+| data[n].language| Language the book was writen. |
+| data[n].isbn| Book ISBN code. |
+| data[n].stock| Current stock. |
+| data[n].pagesNumber| Book page number. |
+| data[n].priceInformation| Book selling price. This amount contains all the taxes or fees. |
+| data[n].priceInformation.amount| Monetary amount. |
+| data[n].priceInformation.currency| ISO 4217 |
 
   
-  
-
 ### Example:
 
   
 
 #### With no query parameters
 
-    {
-	    "data": {
-			"id": "b001"
-		}
-	}
 
-  
+```json
+{
+	"data": {
+		"id": "b001"
+	}
+}
+```  
   
 
 #### With query parameters

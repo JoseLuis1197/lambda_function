@@ -1,13 +1,10 @@
-{
+{  
   "resource": "/books",
-  "path": "/books",
+  "path": "/books/{book-id}",
   "httpMethod": "GET",
   "isBase64Encoded": false,
-  "queryStringParameters": {
-    "name": "bar"
-  },
   "pathParameters": {
-    "proxy": "/path/to/resource"
+    "book-id": "30"
   },
   "stageVariables": {
     "baz": "qux"
@@ -52,7 +49,7 @@
       "userAgent": "Custom User Agent String",
       "user": null
     },
-    "path": "/prod/books",
+    "path": "/prod/books/{book-id}",
     "resourcePath": "/books",
     "httpMethod": "GET",
     "apiId": "1234567890",

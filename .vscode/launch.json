@@ -3,6 +3,22 @@
     {
       "type": "aws-sam",
       "request": "direct-invoke",
+      "name": "getBook:GetBookFunction",
+      "invokeTarget": {
+        "target": "template",
+        "templatePath": "${workspaceFolder}/getBook/template.yaml",
+        "logicalId": "GetBookFunction"
+      },
+      "lambda": {
+        "payload": {
+          "path": "getBook/events/event.json"
+        },
+        "environmentVariables": {}
+      }
+    },
+    {
+      "type": "aws-sam",
+      "request": "direct-invoke",
       "name": "listBooks:ListBooksFunction",
       "invokeTarget": {
         "target": "template",
@@ -10,7 +26,9 @@
         "logicalId": "ListBooksFunction"
       },
       "lambda": {
-        "payload": {"path": "listBooks/events/event.json"},
+        "payload": {
+          "path": "listBooks/events/event.json"
+        },
         "environmentVariables": {}
       }
     }
