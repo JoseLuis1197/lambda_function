@@ -1,5 +1,4 @@
-{
-  "body": "{}",
+{  
   "resource": "/books",
   "path": "/books/{book-id}",
   "httpMethod": "GET",
