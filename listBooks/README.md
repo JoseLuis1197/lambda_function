@@ -53,13 +53,14 @@ This endpoint retrieves a list of books. If limit and offset were informed, the 
 
 #### With no query parameters
 
-    {
-	    "data": {
-			"id": "b001"
-		}
-	}
 
-  
+```json
+{
+	"data": {
+		"id": "b001"
+	}
+}
+```  
   
 
 #### With query parameters
