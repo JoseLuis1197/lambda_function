@@ -17,7 +17,7 @@ def lambda_handler(event, context):
 
     else:
         statusCode = 400
-        bodyResponse = "Mal"
+        bodyResponse = json.dumps({"alias":val.validationResponse[0],"message":val.validationResponse[1]})
 
     return {
         "statusCode": statusCode,
