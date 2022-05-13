@@ -21,9 +21,6 @@
   "path": "/books",
   "httpMethod": "POST",
   "isBase64Encoded": false,
-  "queryStringParameters": {
-    "foo": "bar"
-  },
   "stageVariables": {
     "baz": "qux"
   },
