@@ -3,6 +3,20 @@
     {
       "type": "aws-sam",
       "request": "direct-invoke",
+      "name": "createBook:CreateBookFunction",
+      "invokeTarget": {
+        "target": "template",
+        "templatePath": "${workspaceFolder}/createBook/template.yaml",
+        "logicalId": "CreateBookFunction"
+      },
+      "lambda": {
+        "payload": {"path": "createBook/events/event.json"},
+        "environmentVariables": {}
+      }
+    },
+    {
+      "type": "aws-sam",
+      "request": "direct-invoke",
       "name": "getBook:GetBookFunction",
       "invokeTarget": {
         "target": "template",
