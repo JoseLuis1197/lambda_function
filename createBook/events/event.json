@@ -1,22 +1,5 @@
 {
-  "body": {
-    "name": "El último sueño del Celta",
-    "description": "Muy buen libro para la tarde",
-    "isbn": "948FUF",
-    "language": "Español",
-    "releaseYear":2020,
-    "pagesNumber": 500,
-    "price": {
-      "amount": 23.5,
-      "currency": "USD"
-    },
-    "editor": {
-      "id": 1
-    },
-    "autor": {
-      "id": 1
-    }
-  },
+  "body": "{\"name\":\"HOLA\",\"description\":\"Muybuenlibroparalatarde\",\"isbn\":\"948FUF\",\"language\":\"Español\",\"releaseYear\":2020,\"pagesNumber\":500,\"price\":{\"amount\":23.5,\"currency\":\"USD\"},\"autor\":{\"id\":1}}",
   "resource": "/books",
   "path": "/books",
   "httpMethod": "POST",
