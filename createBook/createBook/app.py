@@ -6,14 +6,15 @@ def lambda_handler(event, context):
 
     ## Inicializar los datos de la creación del libro
 
+    bodyRequest = json.loads(event['body'])
     val = validation()
-    
-    val.validateCreationBookRequest(event["body"])
+    val.validateCreationBookRequest(bodyRequest)
 
     if val.status == "OK":
         book = TestDatabase()
         bodyResponse = {}
         statusCode, bodyResponse = book.createBook(val.validationResponse)
+
     else:
         statusCode = 400
         bodyResponse = "Mal"
