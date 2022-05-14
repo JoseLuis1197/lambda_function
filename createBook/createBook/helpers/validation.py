@@ -1,3 +1,5 @@
+import json
+
 class validation:
 
   def __init__(self) -> None:
@@ -18,11 +20,7 @@ class validation:
     #Adding description
     if "description" in body:
         self.validationResponse.append(body["description"])
-        self.status = "OK"  
-    else:
-        self.status = "WRONG"
-        self.validationResponse = ["requiredFieldMissing","El campo description no ha sido informado."]
-        return validation
+        self.status = "OK"
 
     self.validationResponse.append(0)
 
@@ -32,28 +30,16 @@ class validation:
     if "language" in body:
         self.validationResponse.append(body["language"])
         self.status = "OK"  
-    else:
-        self.status = "WRONG"
-        self.validationResponse = ["requiredFieldMissing","El campo language no ha sido informado."]
-        return validation
 
     #Adding release year
     if "releaseYear" in body:
         self.validationResponse.append(body["releaseYear"])
         self.status = "OK"  
-    else:
-        self.status = "WRONG"
-        self.validationResponse = ["requiredFieldMissing","El campo releaseYear no ha sido informado."]
-        return validation
 
     #Adding isbn code
     if "isbn" in body:
         self.validationResponse.append(body["isbn"])
         self.status = "OK"  
-    else:
-        self.status = "WRONG"
-        self.validationResponse = ["requiredFieldMissing","El campo ISBN no ha sido informado."]
-        return validation
 
     self.validationResponse.append(0)  
 
@@ -61,10 +47,6 @@ class validation:
     if "pagesNumber" in body:
         self.validationResponse.append(body["pagesNumber"])
         self.status = "OK" 
-    else:
-        self.status = "WRONG"
-        self.validationResponse = ["requiredFieldMissing","El campo pagesNumber no ha sido informado."]
-        return validation
 
     #Adding book price
     if "price" in body and "amount" in body["price"]:
