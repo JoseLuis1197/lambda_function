@@ -5,7 +5,7 @@
   "httpMethod": "PATCH",
   "isBase64Encoded": false,
   "pathParameters": {
-    "book-id": 20
+    "book-id": 3
   },
   "stageVariables": {
     "baz": "qux"

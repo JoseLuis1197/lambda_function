@@ -1,13 +1,15 @@
 import json
+from helpers.validation import Validation
 
 
 def lambda_handler(event, context):
 
     bookId = event["pathParameters"]["book-id"]
 
-    print(bookId)
+    val = Validation()
+    val.updateBook(bookId,event["body"])
 
     return {
-        "statusCode": 204,
-        "body": json.dumps({"message": "hello world"})
+        "statusCode": val.statusCode,
+        "body": val.bodyResponse
     }

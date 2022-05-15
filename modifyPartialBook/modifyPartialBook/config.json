@@ -1,0 +1,10 @@
+{
+  "databaseInfo":{
+    "instance":"dbtest1",
+    "endpoint":"bookshare.cjqiq6fsz6yn.us-east-1.rds.amazonaws.com",
+    "port":"3306",
+    "user":"admin",
+    "password":"Jlps1197!",
+    "databaseName":"db_bookShared"
+  }
+}
