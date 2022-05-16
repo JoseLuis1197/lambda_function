@@ -61,9 +61,10 @@ class Validation():
     
     for r in resultImages:
       image = {
-        'id':r[0],
-        'name':r[1],
-        'address':r[2]
+        'id': r[0],
+        'name': r[1],
+        'address': r[2],
+        'isPrincipal': bool(r[4])
       }
 
       images.append(image)
