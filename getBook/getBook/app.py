@@ -1,22 +1,12 @@
-import json
-from testDatabase import TestDatabase
-
-# import requests
-
+from helpers.validation import Validation
 
 def lambda_handler(event, context):
 
     ppBookId = event["pathParameters"]["book-id"]
-
-    book = TestDatabase()
-
-    args = [ppBookId]
-
-    bodyResponse = {}
-
-    statusCode, bodyResponse = book.getBook(args)
+    val = Validation()
+    val.validate(ppBookId)
 
     return {
-        "statusCode": statusCode,
-        "body": bodyResponse
+        "statusCode": val.statusCode,
+        "body": val.responseBody
     }

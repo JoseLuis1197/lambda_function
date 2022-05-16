@@ -23,10 +23,17 @@ class ConnectionDatabase:
       cursor = connection.cursor()
       cursor.callproc(spName, args)   
 
+      i = 1
+
       for result in cursor.stored_results():
-        rfetch = result.fetchall()                 
-        
-      return rfetch
+
+        if i == 1:
+          rfetchBook = result.fetchall()   
+          i = i + 1
+        else:
+          rfetchImages =  result.fetchall() 
+
+      return rfetchBook,rfetchImages
 
     except mysql.connector.Error as error:
       print("Failed to execute stored procedure: {}".format(error))
