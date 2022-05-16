@@ -27,5 +27,4 @@ class TestDatabase:
     resultSet = con.consumeStoreProcedure(self.spNameModifyBook,args)   
 
     return resultSet
-
     

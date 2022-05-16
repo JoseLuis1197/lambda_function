@@ -14,16 +14,16 @@ class Validation:
 
     consult = TestDatabase()
 
-    result = consult.getBook(args)
+    resultGetBook = consult.getBook(args)
 
-    if len(result) == 0:
+    if len(resultGetBook) == 0:
       self.statusCode = 400
       self.bodyResponse = json.dumps({"alias":"bookNotFound","message":"El libro con id {0} no fue encontrado".format(bookId)})
       return Validation
     
     #consumir Sp get para obtener informacion del body, si no hay se completa con lo de abajo
 
-    for r in result:
+    for r in resultGetBook:
       bookName = r[1]
       bookDescription = r[2]
       bookStars = r[3]
@@ -33,8 +33,8 @@ class Validation:
       bookStock = r[8]
       bookPages = r[9]
       bookPrice = float(r[10])
-      bookEditorId = r[12]
-      bookAutorId = r[15]
+      bookEditorId = r[15]
+      bookAutorId = r[11]
       bookImages = r[4]
       
     if "name" in body:
@@ -73,7 +73,7 @@ class Validation:
       args.append(bookStock)
     
     if "pagesNumber" in body:
-      args.append(body["pageNumber"])
+      args.append(body["pagesNumber"])
     else:
       args.append(bookPages)
 
@@ -95,12 +95,18 @@ class Validation:
     if "image" in body:
       args.append(body["image"])  
     else:
-      args.append(bookImages)  
+      args.append(bookImages)
 
     #Calling the SP to update book info
-    consult.modifyBook(args)
-    self.statusCode = 204
-    self.bodyResponse = None
+    resultModifyBook = consult.modifyBook(args)
+
+    for r in resultModifyBook:
+      if r[0] == 'OK':
+        self.statusCode = 204
+        self.bodyResponse = None
+      else:
+        self.statusCode = 400
+        self.bodyResponse = json.dumps({"alias":"invalidEditorOrAutor","message":"Editor o autor inválido."})
 
 
   def validateRequestBody(self,body):
