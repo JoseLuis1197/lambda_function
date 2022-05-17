@@ -3,6 +3,20 @@
     {
       "type": "aws-sam",
       "request": "direct-invoke",
+      "name": "modifyPartialBook:ModifyPartialBookFunction",
+      "invokeTarget": {
+        "target": "template",
+        "templatePath": "${workspaceFolder}/modifyPartialBook/template.yaml",
+        "logicalId": "ModifyPartialBookFunction"
+      },
+      "lambda": {
+        "payload": {"path": "modifyPartialBook/events/event.json"},
+        "environmentVariables": {}
+      }
+    },
+    {
+      "type": "aws-sam",
+      "request": "direct-invoke",
       "name": "createBook:CreateBookFunction",
       "invokeTarget": {
         "target": "template",
@@ -10,7 +24,9 @@
         "logicalId": "CreateBookFunction"
       },
       "lambda": {
-        "payload": {"path": "createBook/events/event.json"},
+        "payload": {
+          "path": "createBook/events/event.json"
+        },
         "environmentVariables": {}
       }
     },

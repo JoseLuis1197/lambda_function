@@ -1,13 +1,11 @@
-{  
+{
+  "body": "{\"name\":\"Conversacionesenlacatedral I\",\"isbn\":\"AAAAAA\",\"language\":\"Ingles\",\"releaseYear\":1994,\"pagesNumber\":400,\"price\":{\"amount\":1,\"currency\":\"USD\"}}",
   "resource": "/books",
-  "path": "/books/{book-id}",
-  "httpMethod": "GET",
+  "path": "/books",
+  "httpMethod": "PATCH",
   "isBase64Encoded": false,
   "pathParameters": {
-    "book-id": 1
-  },
-  "stageVariables": {
-    "baz": "qux"
+    "book-id": 3
   },
   "headers": {
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
@@ -49,9 +47,6 @@
       "userAgent": "Custom User Agent String",
       "user": null
     },
-    "path": "/prod/books/{book-id}",
-    "resourcePath": "/books",
-    "httpMethod": "GET",
     "apiId": "1234567890",
     "protocol": "HTTP/1.1"
   }
