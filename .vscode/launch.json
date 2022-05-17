@@ -3,35 +3,62 @@
     {
       "type": "aws-sam",
       "request": "direct-invoke",
+      "name": "modifyPartialBook:ModifyPartialBookFunction",
       "invokeTarget": {
         "target": "template",
-        "logicalId": "HelloWorldFunction",
-        "templatePath": "${workspaceFolder}/template.yaml"
+        "templatePath": "${workspaceFolder}/modifyPartialBook/template.yaml",
+        "logicalId": "ModifyPartialBookFunction"
       },
       "lambda": {
-        "runtime": "python3.9"
-      },
-      "sam": {
-        "containerBuild": false,
-        "skipNewImageCheck": false
-      },
-      "api": {
-        "path": "/hello",
-        "httpMethod": "get"
-      },
-      "name": "debugpython"
+        "payload": {"path": "modifyPartialBook/events/event.json"},
+        "environmentVariables": {}
+      }
     },
     {
       "type": "aws-sam",
       "request": "direct-invoke",
-      "name": "lambda-python-test:HelloWorldFunction",
+      "name": "createBook:CreateBookFunction",
       "invokeTarget": {
         "target": "template",
-        "templatePath": "${workspaceFolder}/template.yaml",
-        "logicalId": "HelloWorldFunction"
+        "templatePath": "${workspaceFolder}/createBook/template.yaml",
+        "logicalId": "CreateBookFunction"
       },
       "lambda": {
-        "payload": {},
+        "payload": {
+          "path": "createBook/events/event.json"
+        },
+        "environmentVariables": {}
+      }
+    },
+    {
+      "type": "aws-sam",
+      "request": "direct-invoke",
+      "name": "getBook:GetBookFunction",
+      "invokeTarget": {
+        "target": "template",
+        "templatePath": "${workspaceFolder}/getBook/template.yaml",
+        "logicalId": "GetBookFunction"
+      },
+      "lambda": {
+        "payload": {
+          "path": "getBook/events/event.json"
+        },
+        "environmentVariables": {}
+      }
+    },
+    {
+      "type": "aws-sam",
+      "request": "direct-invoke",
+      "name": "listBooks:ListBooksFunction",
+      "invokeTarget": {
+        "target": "template",
+        "templatePath": "${workspaceFolder}/listBooks/template.yaml",
+        "logicalId": "ListBooksFunction"
+      },
+      "lambda": {
+        "payload": {
+          "path": "listBooks/events/event.json"
+        },
         "environmentVariables": {}
       }
     }

@@ -1,0 +1,54 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  listBooks
+
+  Sample SAM Template for listBooks
+
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Timeout: 3
+
+Resources:
+  ListBooksFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: listBooks/
+      Handler: app.lambda_handler
+      Runtime: python3.9
+      Architectures:
+        - arm64
+      Events:
+        ListBooks:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /books
+            Method: get
+            RequestParameters:
+              - method.request.querystring.name:
+                  Required: False
+                  Caching: False
+              - method.request.querystring.autorName:
+                  Required: False
+                  Caching: False
+              - method.request.querystring.pageSize:
+                  Required: False
+                  Caching: False
+              - method.request.querystring.pageOffset:
+                  Required: False
+                  Caching: False
+
+Outputs:
+  # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
+  # Find out more about other implicit resources you can reference within SAM
+  # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
+  ListBooksApi:
+    Description: "API Gateway endpoint URL for Prod stage for Hello World function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/books/"
+  ListBooksFunction:
+    Description: "Hello World Lambda Function ARN"
+    Value: !GetAtt ListBooksFunction.Arn
+  ListBooksFunctionIamRole:
+    Description: "Implicit IAM Role created for Hello World function"
+    Value: !GetAtt ListBooksFunctionRole.Arn
