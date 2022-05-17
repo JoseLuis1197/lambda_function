@@ -4,7 +4,8 @@
   "httpMethod": "GET",
   "isBase64Encoded": false,
   "queryStringParameters": {
-    "name": "bar"
+    "pageSize": 5,
+    "pageOffset": 0
   },
   "pathParameters": {
     "proxy": "/path/to/resource"
