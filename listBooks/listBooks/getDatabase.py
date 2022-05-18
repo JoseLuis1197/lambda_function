@@ -33,32 +33,7 @@ class ConnectionDatabase:
     finally:
       if (connection.is_connected()):
         cursor.close()
-        connection.close()
-  
-  def consumeCreationStoreProcedure(self,spName,args):    
-  
-    try:      
-
-      with open('./config.json') as f:
-        config = json.load(f)
-
-      connection = mysql.connector.connect(host=config['databaseInfo']['endpoint'],
-                                        database=config['databaseInfo']['databaseName'],
-                                        user=config['databaseInfo']['user'],
-                                        password=config['databaseInfo']['password'])
-
-      cursor = connection.cursor()
-      result_args = cursor.callproc(spName, args)         
-                         
-      return result_args[-1]
-
-    except mysql.connector.Error as error:
-      print("Failed to execute stored procedure: {}".format(error))
-    finally:
-      if (connection.is_connected()):
-        cursor.close()
-        connection.close()
-        ##print("MySQL connection is closed")
+        connection.close()    
 
   def insertManyIntoOrderDetail(self,items):
     try:     
