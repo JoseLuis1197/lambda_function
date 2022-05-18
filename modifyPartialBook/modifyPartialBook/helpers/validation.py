@@ -35,8 +35,7 @@ class Validation:
       bookPrice = float(r[10])
       bookEditorId = r[15]
       bookAutorId = r[11]
-      bookImages = r[4]
-      
+
     if "name" in body:
       args.append(body["name"])
     else:
@@ -91,11 +90,6 @@ class Validation:
       args.append( body["autor"]["id"])
     else:
       args.append(bookAutorId)
-
-    if "image" in body:
-      args.append(body["image"])  
-    else:
-      args.append(bookImages)
 
     #Calling the SP to update book info
     resultModifyBook = consult.modifyBook(args)
