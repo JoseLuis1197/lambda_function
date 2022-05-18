@@ -1,4 +1,3 @@
-from asyncio.windows_events import NULL
 from testDatabase import TestDatabase
 import json
 
@@ -41,9 +40,9 @@ class Validation():
     ## Creating a dictionary
     for row in resultSet:
 
-      if len(bookDict) != 0:
-        bookDict[len(bookDict)-1]["id"] = row[0]
-        next       
+      ##if len(bookDict) != 0 and not row[0]:
+        ##bookDict[len(bookDict)-1]["id"] = row[0]
+        ##next       
 
       o = {
             'id':row[0],
@@ -66,19 +65,20 @@ class Validation():
             }
           }
 
-      bookDict.append(o)    
-
-      if row[13] != NULL or row[13] == "":
-        images = [
-          {
+      if row[13] != None or row[13] == "":
+        image = {
             "id": row[13],
             "name": row[15],
             "address": row[16]
           }
-        ]
         
-        bookDict["images"] = images     
+        images = []
+        images.append(image)
+        
+        o["images"] = images 
 
+      bookDict.append(o)    
+    
 
     self.statusCode = 200
     self.responseBody = json.dumps({'data':bookDict})
