@@ -25,15 +25,14 @@ Resources:
           Properties:
             Path: /books/{book-id}
             Method: get
+          RestApiId:
+            Ref: wsr41hblek
 
 
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
   # Find out more about other implicit resources you can reference within SAM
   # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
-  GetBookApi:
-    Description: "API Gateway endpoint URL for Prod stage for get book endpoint"
-    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/books/{book-id}"
   GetBookFunction:
     Description: "Get Book Lambda Function ARN"
     Value: !GetAtt GetBookFunction.Arn
